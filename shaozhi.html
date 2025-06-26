@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林釉陶文化馆 - 釉陶烧制</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式变量定义 */
+        :root {
+            --primary-color: #2c6e49;
+            --secondary-color: #4c956c;
+            --bg-color: #ffffff;
+            --light-bg: #f1f7ed;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #dce4d8;
+            --accent-color: #d4a017;
+        }
+        
+        /* 全局样式重置 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        html { 
+            font-size: 18px; 
+            scroll-behavior: smooth; 
+        }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        
+        /* 头部横幅样式 - 已修改 */
+        .top-banner {
+            width: 100vw;
+            height: 450px;
+            background: url('image/feiyilicheng/banner.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0.78;
+        }
+        .top-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.0);
+            z-index: 0;
+            opacity: 0.2;
+        }
+        .banner-title {
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .banner-subtitle { /* 新增副标题 */
+            position: absolute;
+            bottom: 50px;
+            left: 60%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 1.8em;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+        }
+        
+        /* 导航栏样式 */
+        nav {
+            background: var(--bg-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        nav.scroll {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--text-color);
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        .nav-link.active, 
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(44, 110, 73, 0.3);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link i { font-size: 1.2em; }
+        
+        /* 主要内容区样式 */
+        .main-section {
+            margin: 40px auto;
+            background: var(--light-bg);
+            border-radius: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            padding: 50px 40px;
+            position: relative;
+            max-width: 1100px;
+            width: 90%;
+        }
+        .main-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 24px;
+            background: linear-gradient(to bottom right, rgba(44, 110, 73, 0.03), transparent);
+            z-index: -1;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(44, 110, 73, 0.3);
+            display: inline-block;
+        }
+        
+        /* 返回顶部按钮样式 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(44, 110, 73, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #back-to-top.active { opacity: 1; visibility: visible; }
+        
+        /* 页脚样式 */
+        .footer {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1em;
+            margin: 60px 0 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer p { margin-bottom: 10px; }
+        .footer span { font-size: 0.9em; color: var(--light-text); display: block; }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .main-section { padding: 30px 20px; margin: 20px auto; }
+            .top-banner { height: 250px; }
+            .banner-title { font-size: 2.2em; padding: 0.2em 1em; }
+            nav { padding: 10px 0; }
+            .nav-link { padding: 6px 12px; font-size: 1em; }
+        }
+        @media (max-width: 600px) {
+            .banner-title { font-size: 1.8em; }
+            .nav-container { gap: 15px; }
+            .top-banner { height: 200px; }
+            .banner-subtitle { font-size: 1.1em; }
+        }
+        
+        /* 新增交互样式 - 工艺步骤 */
+        .process-step {
+            position: relative;
+            padding: 25px 20px 25px 50px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid var(--primary-color);
+        }
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(44, 110, 73, 0.15);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .step-number {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        
+        /* 新增交互样式 - 创新技术卡片 */
+        .innovation-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (min-width: 768px) {
+            .innovation-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(44, 110, 73, 0.12);
+        }
+        .card h3 {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .card p {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin: 0;
+        }
+        .card-content {
+            padding: 15px 20px;
+            display: none;
+        }
+        .card-content p {
+            border-bottom: none;
+        }
+        .card-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+        
+        /* 新增交互样式 - 时间轴 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary-color);
+            position: absolute;
+            top: 15px;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -16px;
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 15px;
+                right: auto;
+            }
+        }
+        
+        /* 新增交互样式 - 釉色展示 */
+        .glaze-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .glaze-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .color-preview {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .color-preview p {
+            margin: 5px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部横幅 - 已修改 -->
+    <div class="top-banner">
+        <div class="banner-title">釉绿釉彩</div>
+        <div class="banner-subtitle">——桂林釉陶烧制技艺</div>
+    </div>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <div class="nav-container">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a class="nav-link" href="feiyilicheng.html"><i class="fas fa-history"></i> 非遗历程</a>
+            <a class="nav-link" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a>
+            <a class="nav-link" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a>
+            <a class="nav-link" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a>
+            <a class="nav-link active" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a>
+            <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a>
+        </div>
+    </nav>
+    
+    <!-- 主要内容区 -->
+    <div class="container">
+        <section class="main-section">
+            <!-- 釉陶烧制历史 -->
+            <h2>釉陶烧制历史</h2>
+            <div class="firing-history">
+                <p>桂林釉陶烧制技艺可追溯至宋代，据《桂林窑业考》记载，当时工匠已掌握龙窑柴烧工艺，通过控制窑温与气氛烧制出青釉、褐釉等特色产品。传统龙窑依山而建，长达数十米，利用自然抽力形成温差带，使釉料在高温下产生独特的窑变效果。</p>
+                <p>明清时期，桂林釉陶因"釉色如漓江春水"而成为贡品，窑口主要分布在今象山区瓦窑一带。考古发现显示，宋代窑址中出土的釉陶残片已具备"胎质细腻、釉面莹润"的特点，其中青釉制品的氧化铁含量控制在2.5%-3.2%之间，形成了独特的漓江青色系。</p>
+                <p>近代以来，桂林釉陶经历了工艺传承的断层与复兴，目前已被列入广西非物质文化遗产名录，传承人们在保留传统技艺的同时，不断探索创新发展之路。</p>
+            </div>
+            
+            <!-- 核心烧制工艺 -->
+            <h2 class="mt-40">核心烧制工艺</h2>
+            <div class="firing-process">
+                <div class="process-step">
+                    <span class="step-number">1</span>
+                    <strong>选土与练泥</strong>——选取桂林喀斯特地貌特有的紫泥与白泥，按3:1比例混合，经9次淘洗去除杂质，陈腐180天以上使黏土分子结构稳定，提升可塑性。紫泥中含有的铁、镁等矿物质是形成特色釉色的关键因素。
+                </div>
+                <div class="process-step">
+                    <span class="step-number">2</span>
+                    <strong>拉坯成型</strong>——手工拉坯需经"揉泥、定中心、开洞、拔高"四步，转速控制在120-150转/分钟；机械成型采用数控拉坯机，误差控制在0.5mm以内。成型后阴干7天至含水率15%，避免烧制过程中产生开裂。
+                </div>
+                <div class="process-step">
+                    <span class="step-number">3</span>
+                    <strong>施釉工艺</strong>——传统浸釉需把控釉浆密度（波美度18-22°），现代结合六轴施釉设备，四枪同步喷釉，釉层厚度均匀控制在0.3-0.5mm。不同釉色的施釉方法各异，如"漓江青"釉需采用多次薄施的方式达到层次效果。
+                </div>
+                <div class="process-step">
+                    <span class="step-number">4</span>
+                    <strong>入窑烧制</strong>——传统龙窑需72小时完成"升温-保温-降温"三阶段，最高温达1280℃，通过投柴速度控制窑内氧化/还原气氛；现代电窑采用32点分布式控温，升温速率精确到1℃/分钟，烧制周期缩短至48小时，温度均匀性显著提升。
+                </div>
+            </div>
+            
+            <!-- 现代技术创新 -->
+            <h2 class="mt-40">现代技术创新</h2>
+            <div class="firing-innovation">
+                <p>随着科技发展，桂林釉陶烧制技艺在保留传统精髓的同时，融入了多项创新技术：</p>
+                <div class="innovation-cards">
+                    <div class="card" onclick="toggleCard(this)">
+                        <h3>智能控温系统</h3>
+                        <p>采用PID精准控温与分布式数字化控温双重技术，窑温误差控制在±5℃以内，温度均匀性达99%，能耗降低30%，成品率从65%提升至90%。</p>
+                        <div class="card-content">
+                            <p>技术原理：通过32个温度传感器实时监测窑内各点温度，PID算法自动调节加热功率，当温差超过±5℃时触发警报系统并自动补偿。相比传统龙窑，电窑的温度控制精度提升了400%，有效解决了"窑变不可控"的行业难题。</p>
+                            <img src="https://picsum.photos/seed/温控系统/600/300" alt="智能控温系统示意图">
+                        </div>
+                    </div>
+                    <div class="card" onclick="toggleCard(this)">
+                        <h3>环保节能改造</h3>
+                        <p>传统龙窑升级为天然气窑炉，配备烟尘过滤系统，减少90%以上污染物排放，同时利用余热回收技术，每窑节省能耗约400kW·h。</p>
+                        <div class="card-content">
+                            <p>改造细节：天然气燃烧系统替代传统柴烧，氮氧化物排放量从200mg/m³降至15mg/m³以下；窑炉墙体采用多层隔热材料，热损失减少50%；余热回收装置将降温阶段的热量用于预热釉料，能源利用率提升35%。</p>
+                            <img src="https://picsum.photos/seed/环保改造/600/300" alt="环保节能窑炉示意图">
+                        </div>
+                    </div>
+                    <div class="card" onclick="toggleCard(this)">
+                        <h3>数字化配方管理</h3>
+                        <p>建立包含54种天然原矿的釉料数据库，通过AI算法优化配比，成功开发出"漓江青""象鼻褐"等20余种新型釉色，其中"月光白"釉料获国家专利。</p>
+                        <div class="card-content">
+                            <p>技术应用：数据库记录了每种原矿的化学组成、熔融温度等参数，AI算法通过机器学习模拟不同配比的釉色效果，将新釉色开发周期从传统的6个月缩短至2周。例如"象鼻褐"釉通过分析象鼻山岩石成分，加入12%的氧化铁和5%的长石，呈现出与山体一致的赭石色调。</p>
+                            <img src="https://picsum.photos/seed/釉料数据库/600/300" alt="数字化配方管理系统">
+                        </div>
+                    </div>
+                    <div class="card" onclick="toggleCard(this)">
+                        <h3>六轴施釉工艺</h3>
+                        <p>引进四枪六轴喷釉设备，通过机器人手臂360°旋转施釉，釉面平整度提升40%，解决了传统手工施釉的厚度不均问题。</p>
+                        <div class="card-content">
+                            <p>工艺优势：六轴机器人可实现0.1mm级的施釉精度，针对不同器型自动调整喷釉角度和距离；四枪同步作业使施釉效率提升3倍，且釉料利用率从60%提高至85%。该技术特别适合复杂器型和薄胎器物的施釉，如镂空花瓶的内部施釉合格率从30%提升至85%。</p>
+                            <img src="https://picsum.photos/seed/六轴施釉/600/300" alt="六轴施釉设备示意图">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 釉陶技艺发展时间轴 -->
+            <h2 class="mt-40">釉陶技艺发展时间轴</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>宋代（960-1279）</h4>
+                        <p>龙窑柴烧工艺成型，开始烧制青釉、褐釉陶器，窑址主要分布在漓江沿岸，形成早期桂林釉陶风格。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>明清时期（1368-1912）</h4>
+                        <p>桂林釉陶成为贡品，"釉色如漓江春水"的美誉流传，瓦窑一带形成集中的制陶作坊区，工艺达到鼎盛。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>民国时期（1912-1949）</h4>
+                        <p>受战乱影响，釉陶产业逐渐衰落，传统工艺面临失传，仅少数工匠维持小规模生产。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>20世纪50-80年代</h4>
+                        <p>国营陶瓷厂成立，尝试恢复传统工艺，引入机械制陶设备，开始规模化生产日用陶瓷。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>21世纪初（2000-2010）</h4>
+                        <p>桂林釉陶被列入广西非物质文化遗产名录，传承人体系建立，传统工艺与现代设计开始结合。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>现在（2010-至今）</h4>
+                        <p>釉陶产业向文化创意转型，融入智能科技，产品涵盖艺术品、生活用品等，品牌影响力逐步扩大。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 特色釉色展示 -->
+            <h2 class="mt-40">特色釉色展示</h2>
+            <div class="glaze-colors">
+                <button class="glaze-btn" data-color="#2c6e49">漓江青</button>
+                <button class="glaze-btn" data-color="#d4a017">象鼻褐</button>
+                <button class="glaze-btn" data-color="#8a795d">瓦窑灰</button>
+                <button class="glaze-btn" data-color="#a3b489">茶园绿</button>
+                <button class="glaze-btn" data-color="#d8ccc0">月光白</button>
+                <button class="glaze-btn" data-color="#967561">桂树皮</button>
+            </div>
+            <div class="color-preview" id="colorPreview">
+                <p>请点击上方釉色按钮</p>
+                <p>查看对应釉色效果</p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>桂林釉绿釉彩文化传播有限公司</p>
+        <span>地址：桂林市象山区瓦窑路陶瓷文化创意园</span>
+        <span>联系电话：0773-1234567 | 邮箱：gl_youtao@example.com</span>
+        <span>Copyright © 2024 釉绿釉彩 All Rights Reserved</span>
+    </div>
+    
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('scroll', window.scrollY > 50);
+        });
+        
+        // 返回顶部按钮显示/隐藏
+        window.addEventListener('scroll', () => {
+            const backToTop = document.getElementById('back-to-top');
+            backToTop.classList.toggle('active', window.scrollY > 300);
+        });
+        
+        // 创新技术卡片展开/收起
+        function toggleCard(card) {
+            const content = card.querySelector('.card-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        // 釉色预览交互
+        const glazeBtns = document.querySelectorAll('.glaze-btn');
+        const colorPreview = document.getElementById('colorPreview');
+        
+        glazeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const color = btn.getAttribute('data-color');
+                colorPreview.style.backgroundColor = color;
+                colorPreview.innerHTML = `<p>${btn.textContent}</p><p>色值: ${color}</p>`;
+                
+                // 按钮高亮效果
+                glazeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

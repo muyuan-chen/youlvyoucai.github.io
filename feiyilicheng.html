@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林釉陶文化馆 - 非遗历程</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 完全继承index.html的样式，保持一致性 */
+        :root {
+            --primary-color: #47603c;
+            --secondary-color: #49745f;
+            --bg-color: #ffffff;
+            --light-bg: #f1f7ed;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #dce4d8;
+            --accent-color: #d3c791;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+        .container { 
+            max-width: 100%; 
+            margin: 0 auto; 
+            padding: 0; 
+            border: none; 
+            border-radius: 0;
+        }
+        .top-banner {
+            width: 100vw;
+            height: 450px;
+            background: url('image/feiyilicheng/banner.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0.78
+        } 
+
+        .top-banner::before {
+            content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.0); /* 添加半透明遮罩提升文字可读性 */
+                z-index: 0; /* 确保在背景上方，内容下方 */
+                opacity: 0.2; /* 调整这里改变透明度 */
+        } 
+            
+            /* 内容需要额外包裹并设置z-index */
+        .top-banner-content {
+            position: relative;
+                z-index: 1; /* 确保内容显示在遮罩层上方 */
+                color: rgb(94, 60, 60); /* 文字颜色建议改为浅色 */
+                text-align: center;
+                padding: 20px;
+        }
+                
+        .banner-title {
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .banner-subtitle {
+            position: absolute;
+            bottom: 50px;
+            left: 60%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 1.8em;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+        }
+        nav {
+            background: var(--bg-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        nav.scroll {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--text-color);
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        .nav-link.active, 
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(122, 169, 122, 0.3);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link i { font-size: 1.2em; }
+        .main-section {
+            margin: 40px auto;
+            background: var(--light-bg);
+            border-radius: 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            padding: 50px 40px;
+            position: relative;
+            width: 100%;
+            background-image: url('image/feiyilicheng/main-section.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+        .main-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+            z-index: 0;
+        }
+        .main-section > div {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(44, 110, 73, 0.3);
+            display: inline-block;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(44, 110, 73, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #back-to-top.active { opacity: 1; visibility: visible; }
+        .footer {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1em;
+            margin: 60px 0 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer p { margin-bottom: 10px; }
+        .footer span { font-size: 0.9em; color: var(--light-text); display: block; }
+        @media (max-width: 900px) {
+            .main-section { padding: 30px 20px; margin: 20px auto; }
+            .top-banner { height: 200px; }
+            .banner-title { font-size: 2em; padding: 0.2em 1em; }
+            nav { padding: 10px 0; }
+            .nav-link { padding: 6px 12px; font-size: 1em; }
+        }
+        @media (max-width: 600px) {
+            .banner-title { font-size: 1.8em; }
+            .nav-container { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-title" style="
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient( #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+        ">釉绿釉彩</div>
+        <div class="banner-subtitle">——桂林釉陶非遗技艺</div>
+    </div>
+    <nav>
+        <div class="nav-container">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a class="nav-link active" href="lishi.html"><i class="fas fa-history"></i> 非遗历程</a> <!-- 当前页添加active类 -->
+            <a class="nav-link" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a>
+            <a class="nav-link" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a>
+            <a class="nav-link" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a>
+            <a class="nav-link" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a>
+            <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="main-section">
+            <!-- 历史地位 -->
+            <style>
+                .flex-container {
+                  display: flex;
+                  justify-content: center;
+                }
+                .history-container {
+                    background: var(--light-bg);
+                    border-radius: 0;
+                    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+                    padding: 50px 40px;
+                    position: relative;
+                    width: 100%;
+                    margin: 20px 0;
+                }
+                .history-container::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: none;
+                    z-index: 0;
+                }
+                .history-content {
+                    max-width: 1100px;
+                    margin: 0 auto;
+                    width: 90%;
+                    position: relative;
+                    z-index: 1;
+                }
+            </style>
+              
+            <div class="flex-container">
+                <h2>历史地位</h2>
+            </div>
+            <div class="history-container">
+                <div class="history-content">
+                    <p style="
+                        text-align: center;
+                        font-weight: normal;
+                        font-size: 29px;
+                        font-family: 'STXingkai', 'KaiTi', cursive;
+                        color: #8B4513;
+                        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                        background: linear-gradient(to right, #000000, #000000, #273934);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        letter-spacing: 1px;
+                    ">桂林拥有甑皮岩、庙岩、大岩三处万年古陶遗址，是目前全球唯一拥有三处万年陶遗址的城市，被誉为"人类陶器起源地之一"。</p>
+                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px;">
+                        <div style="text-align: center; margin: 10px;">
+                            <img src="image/feiyilicheng/甑皮岩.jpg" alt="甑皮岩" style="width: 100%; max-width: 420px; height: 280px; object-fit: cover; border-radius: 0px;">
+                            <p style="margin-top: 8px;">甑皮岩</p>
+                        </div>
+                        <div style="text-align: center; margin: 10px;">
+                            <img src="image/feiyilicheng/庙岩.jpg" alt="庙岩" style="width: 100%; max-width: 420px; height: 280px; object-fit: cover; border-radius: 0px;">
+                            <p style="margin-top: 8px;">庙岩</p>
+                        </div>
+                        <div style="text-align: center; margin: 10px;">
+                            <img src="image/feiyilicheng/大岩.jpeg" alt="大岩" style="width: 100%; max-width: 420px; height: 280px; object-fit: cover; border-radius: 0px;">
+                            <p style="margin-top: 8px;">大岩</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工艺特征 -->
+            <style>
+                .flex-container {
+                  display: flex;
+                  justify-content: center;
+                }
+              </style>
+              
+              <div class="flex-container">
+                <h2>工艺特征</h2>
+              </div>
+            <div class="process-section">
+                <style>
+                    .process-carousel {
+                        display: flex;
+                        overflow-x: auto;
+                        scroll-snap-type: x mandatory;
+                        gap: 20px;
+                        padding: 20px 0;
+                        margin: 20px 0;
+                    }
+                    .process-step {
+                        scroll-snap-align: start;
+                        min-width: 360px;
+                        text-align: center;
+                        background: var(--light-bg);
+                        border-radius: 8px;
+                        padding: 30px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                    .process-step img {
+                        width: 100%;
+                        max-width: 340px;
+                        max-height: 280px;
+                        aspect-ratio: 4 / 3;
+                        object-fit: cover;
+                        border-radius: 10px;
+                        margin-bottom: 18px;
+                    }
+                </style>
+                
+                <style>
+                    .glaze-subtitle {
+                        text-align: center;
+                        margin: 0 0 30px;
+                        font-size: 1.4em;
+                        color: var(--secondary-color);
+                        font-family: 'STXingkai', 'KaiTi', cursive;
+                        font-weight: normal;
+                        letter-spacing: 1px;
+                        position: relative;
+                        display: inline-block;
+                    }
+                    .glaze-subtitle::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 25%;
+                        width: 50%;
+                        height: 2px;
+                        background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+                    }
+                </style>
+                
+                <div style="text-align: center;">
+                    <h3 class="glaze-subtitle">五大流程（50余道工序）</h3>
+                </div>
+                
+                <div class="process-carousel">
+                    <div class="process-step">
+                        <img src="image/feiyilicheng/制作.jpg" alt="配制陶土">
+                        <h4>配制陶土</h4>
+                    </div>
+                    <div class="process-step">
+                        <img src="image/feiyilicheng/手工制坯.jpg" alt="手工制坯">
+                        <h4>手工制坯</h4>
+                
+                    </div>
+                    <div class="process-step">
+                        <img src="image/feiyilicheng/素烧.jpg" alt="素烧成型">
+                        <h4>素烧成型</h4>
+
+                    </div>
+                    <div class="process-step">
+                        <img src="image/feiyilicheng/上釉.jpg" alt="配釉上釉">
+                        <h4>配釉上釉</h4>
+
+                    </div>
+                    <div class="process-step">
+                        <img src="image/feiyilicheng/复合.jpg" alt="复合窑烧">
+                        <h4>复合窑烧</h4>
+                        
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h3 class="glaze-subtitle">釉色创新</h3>
+                </div>
+                
+                <style>
+                    .glaze-scroll-container {
+                        height: 1000px;
+                        overflow-y: auto;
+                        padding: 15px;
+                        margin: 20px 0;
+                        background: var(--light-bg);
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                    .glaze-item {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-bottom: 50px;
+                        padding-bottom: 30px;
+                        border-bottom: 1px dashed var(--border-color);
+                    }
+                    .glaze-item:last-child {
+                        border-bottom: none;
+                    }
+                    .glaze-item img {
+                        width: 100%;
+                        max-width: 500px;
+                        height: 400px;
+                        object-fit: cover;
+                        border-radius: 6px;
+                        margin-bottom: 15px;
+                        cursor: pointer;
+                        transition: transform 0.3s ease;
+                    }
+                    .glaze-item img:hover {
+                        transform: scale(1.02);
+                    }
+                    .glaze-item h4 {
+                        color: var(--primary-color);
+                        margin-bottom: 15px;
+                        font-size: 1.3em;
+                    }
+                    .glaze-item p {
+                        font-size: 1.1em;
+                        color: var(--text-color);
+                        text-align: center;
+                        max-width: 500px;
+                    }
+                </style>
+                
+                <div class="glaze-scroll-container">
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/黑釉.jpg" alt="黑釉">
+                        <h4>黑釉</h4>
+                        <p>融合黑山泥，色泽深邃，质感厚重</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/酱釉.jpg" alt="酱釉">
+                        <h4>酱釉</h4>
+                        <p>酱色温润，源自桂林红土，古朴典雅</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/玳瑁釉.jpg" alt="玳瑁釉">
+                        <h4>玳瑁釉</h4>
+                        <p>色彩斑斓，仿生玳瑁壳，极具装饰性</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/钧釉.jpg" alt="钧釉">
+                        <h4>钧釉</h4>
+                        <p>蓝紫交融，釉色流动，变化万千</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/月白釉.jpg" alt="月白釉">
+                        <h4>月白釉</h4>
+                        <p>色如月光，温润素雅，桂林独有</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/莲花纹样.jpg" alt="莲花纹样">
+                        <h4>莲花纹样</h4>
+                        <p>桂林水域特色，象征纯洁高雅</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/水草纹样.jpg" alt="水草纹样">
+                        <h4>水草纹样</h4>
+                        <p>漓江水草形态，展现地域特色</p>
+                    </div>
+                    <div class="glaze-item">
+                        <img src="image/feiyilicheng/几何纹样.jpg" alt="几何图形">
+                        <h4>几何图形</h4>
+                        <p>传统与现代结合，简约而不简单</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 非遗认证 -->
+            <div class="flex-container">
+                <h2 class="section-title">非遗认证</h2>
+            </div>
+            <div class="section-content">
+                <a id="cert-link" href="http://www.gxzf.gov.cn/zfwj/zzqrmzfwj_34845/t17256669.shtml" target="_self" style="color:inherit; text-decoration:underline;">
+                    2023年，桂林釉陶技艺正式列入广西第九批自治区级非遗代表性项目名录，标志着这一古老技艺的保护与传承进入新的阶段。
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- 返回顶部按钮（与index.html一致） -->
+<button id="back-to-top">↑</button>
+
+<div class="footer">
+    <p>© 2024 桂林釉陶文化馆</p>
+    <span>数据来源：甑皮岩考古博物馆、桂林市非物质文化遗产保护中心</span>
+</div>
+
+<!-- 脚本与index.html完全一致 -->
+<script>
+    // 返回顶部按钮逻辑
+    const backToTopBtn = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('active');
+        } else {
+            backToTopBtn.classList.remove('active');
+        }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 导航栏滚动效果
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            nav.classList.add('scroll');
+        } else {
+            nav.classList.remove('scroll');
+        }
+    });
+    
+    // 设置当前活动导航链接（已在HTML中手动标记active，此处可选保留）
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+<!-- 在process-section下方添加弹窗HTML -->
+<div id="img-modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
+    <img id="img-modal-img" src="" alt="" style="max-width:90vw; max-height:90vh; box-shadow:0 8px 32px rgba(0,0,0,0.5); border-radius:12px;">
+  </div>
+
+  <script>
+  // 图片点击放大查看
+  const processImgs = document.querySelectorAll('.process-step img');
+  const imgModal = document.getElementById('img-modal');
+  const imgModalImg = document.getElementById('img-modal-img');
+  processImgs.forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+      imgModalImg.src = this.src;
+      imgModalImg.alt = this.alt;
+      imgModal.style.display = 'flex';
+    });
+  });
+  imgModal.addEventListener('click', function(e) {
+    if (e.target === imgModal || e.target === imgModalImg) {
+      imgModal.style.display = 'none';
+      imgModalImg.src = '';
+    }
+  });
+  </script>
+
+  <!-- 认证跳转弹窗图片（可手动更换src） -->
+  <div id="cert-modal" style="display:none; position:fixed; z-index:3000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); align-items:center; justify-content:center;">
+    <img id="cert-modal-img" src="images\证明.jpg" alt="认证弹窗图片" style="max-width:80vw; max-height:80vh; box-shadow:0 8px 32px rgba(0,0,0,0.5); border-radius:12px; background:#fff;">
+  </div>
+
+  <script>
+  // 认证链接点击弹窗图片，关闭后自动跳转
+  const certLink = document.getElementById('cert-link');
+  const certModal = document.getElementById('cert-modal');
+  const certModalImg = document.getElementById('cert-modal-img');
+  let certTargetUrl = certLink ? certLink.href : '';
+  if(certLink && certModal) {
+    certLink.addEventListener('click', function(e) {
+      certModal.style.display = 'flex';
+      e.preventDefault();
+    });
+    certModal.addEventListener('click', function() {
+      certModal.style.display = 'none';
+      if(certTargetUrl) {
+        window.location.href = certTargetUrl;
+      }
+    });
+  }
+  </script>
+</body>
+</html>

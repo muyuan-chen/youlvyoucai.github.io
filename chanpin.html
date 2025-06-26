@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>桂林釉陶文化馆 - 釉陶产品</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #47603c;
+      --secondary-color: #49745f;
+      --bg-color: #ffffff;
+      --light-bg: #f1f7ed;
+      --text-color: #333333;
+      --light-text: #666666;
+      --border-color: #dce4d8;
+      --accent-color: #d3c791;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 18px; scroll-behavior: smooth; }
+    body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+        .container { 
+            max-width: 100%; 
+            margin: 0 auto; 
+            padding: 0; 
+            border: none; 
+            border-radius: 0;
+        }
+
+    .top-banner {
+            width: 100vw;
+            height: 450px;
+            background: url('image/chanpin/banner.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0.78
+        } 
+
+    .top-banner::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.0);
+      z-index: 0;
+      opacity: 0.2;
+    }
+    .banner-title {
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+    .banner-subtitle {
+      position: absolute;
+      bottom: 50px;
+      left: 60%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.8);
+      font-size: 1.8em;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+    }
+    nav {
+      background: var(--bg-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+    nav.scroll {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      color: var(--text-color);
+      font-size: 1.1em;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 20px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+    }
+    .nav-link.active, 
+    .nav-link:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(122, 169, 122, 0.3);
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--accent-color);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-link.active::after,
+    .nav-link:hover::after {
+      width: 80%;
+    }
+    .nav-link i { font-size: 1.2em; }
+    @media (max-width: 900px) {
+      .top-banner { height: 200px; }
+      .banner-title { font-size: 2em; padding: 0.2em 1em; }
+      nav { padding: 10px 0; }
+      .nav-link { padding: 6px 12px; font-size: 1em; }
+    }
+    @media (max-width: 600px) {
+      .banner-title { font-size: 1.8em; }
+      .nav-container { gap: 15px; }
+    }
+    /* 卡片区样式 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px 60px 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c6e49;
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+    }
+    .subtitle {
+      text-align: center;
+      color: #444;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+    .product-section {
+      margin-bottom: 60px;
+    }
+    .section-title {
+      color: #2c6e49;
+      font-size: 1.5em;
+      margin-bottom: 24px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      border-left: 6px solid #d4a017;
+      padding-left: 16px;
+      background: #fff;
+      display: inline-block;
+    }
+    .product-group {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(44,110,73,0.08);
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .product-card.big {
+      flex: 1 1 340px;
+      max-width: 340px;
+      min-width: 260px;
+      min-height: 420px;
+    }
+    .product-card.small {
+      flex: 1 1 180px;
+      max-width: 180px;
+      min-width: 140px;
+      min-height: 260px;
+    }
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 2px solid #d1e8e2;
+      background: #fafaf8;
+    }
+    .product-card.small .product-img {
+      height: 120px;
+    }
+    .card-base {
+      padding: 16px 12px 8px 12px;
+      text-align: center;
+      width: 100%;
+    }
+    .product-title {
+      font-size: 1.08em;
+      color: #2c6e49;
+      margin: 0 0 6px 0;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+    }
+    .product-tag {
+      font-size: 0.95em;
+      color: #666;
+      opacity: 0.8;
+      margin: 0;
+    }
+    .card-story {
+      font-size: 0.97em;
+      color: #444;
+      background: rgba(255,255,255,0.95);
+      padding: 10px 14px 14px 14px;
+      border-radius: 0 0 16px 16px;
+      margin-top: auto;
+      min-height: 70px;
+      transition: background 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 6px 24px rgba(44,110,73,0.13);
+    }
+    .product-card:hover .card-story {
+      background: #f9f6ef;
+    }
+    @media (max-width: 900px) {
+      .product-group { flex-direction: column; gap: 18px; }
+      .product-card.big, .product-card.small { max-width: 100%; min-width: 0; }
+      .product-card.big .product-img { height: 180px; }
+      .product-card.small .product-img { height: 90px; }
+    }
+    /* 釉色模拟器样式 */
+    .glaze-simulator {
+      max-width: 900px;
+      margin: 0 auto 48px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(58,95,86,0.10);
+      padding: 32px 36px 28px 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .glaze-simulator label {
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-right: 8px;
+    }
+    .glaze-simulator select, .glaze-simulator button {
+      font-size: 1em;
+      padding: 6px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--light-bg);
+      margin-right: 18px;
+      margin-bottom: 8px;
+      background: var(--offwhite, #fafaf8);
+      color: var(--primary-color);
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    .glaze-simulator button {
+      background: var(--light-bg);
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(58,95,86,0.08);
+    }
+    .glaze-simulator button:hover {
+      background: var(--primary-color);
+      color: var(--light-bg);
+    }
+    #glaze-preview {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--primary-color);
+      margin-top: 8px;
+      background: linear-gradient(135deg, #EAF5F2 0%, #D1E8E2 100%);
+      box-shadow: 0 2px 8px rgba(58,95,86,0.10);
+      transition: background 0.6s, filter 0.6s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      color: var(--primary-color);
+    }
+    .simulator-tip {
+      color: var(--deep-gray, #444);
+      font-size: 0.98em;
+      opacity: 0.8;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">
+        <div class="banner-title" style="
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient( #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+        ">釉绿釉彩</div>
+        <div class="banner-subtitle">——桂林釉陶非遗技艺</div>
+    </div>
+  <nav>
+    <div class="nav-container">
+      <a class="nav-link" href="index.html"><i class="fas fa-home"></i> 首页</a>
+      <a class="nav-link" href="feiyilicheng.html"><i class="fas fa-history"></i> 非遗历程</a>
+      <a class="nav-link" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a>
+      <a class="nav-link active" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a>
+      <a class="nav-link" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a>
+      <a class="nav-link" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a>
+      <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>桂陶・釉陶产品</h1>
+    <div class="subtitle">以釉为墨，绘桂林山水 | 每一件釉陶，都是桂林山水的微观缩影</div>
+    <!-- 水系列 -->
+    <div class="product-section">
+      <div class="section-title">水系列</div>
+      <div class="product-group">
+        <div class="product-card big">
+          <img src="image/chanpin/桂林山水杯.png" alt="桂林山水杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">桂林山水杯</div>
+            <div class="product-tag">青釉窑变</div>
+          </div>
+          <div class="card-story">
+            灵感源自漓江山水，釉色窑变模拟山水云雾。<br>
+            工艺：12阶还原焰烧制，还原桂林山水的青釉流动纹理。<br>
+            文化关联：唐代桂州窑技法传承，将漓江烟雨融入釉色。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/切面原釉杯.png" alt="切面原釉杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">切面原釉杯</div>
+            <div class="product-tag">蓝釉窑变</div>
+          </div>
+          <div class="card-story">
+            灵感取自桂林岩溶地貌，釉色流动如水波。<br>
+            工艺：高温还原焰，蓝釉自然流淌。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/漓江云影杯.png" alt="漓江云影杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">漓江云影杯</div>
+            <div class="product-tag">云影釉</div>
+          </div>
+          <div class="card-story">
+            灵感取自漓江水面倒影，釉色晕染如云影流动。<br>
+            工艺：多层釉叠加，低温慢烧，形成独特云影纹。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/青釉流泉杯.png" alt="青釉流泉杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">青釉流泉杯</div>
+            <div class="product-tag">流泉釉</div>
+          </div>
+          <div class="card-story">
+            灵感源自山间流泉，釉色流动如泉水潺潺。<br>
+            工艺：青釉高温流动，形成自然流泉纹。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 茶具系列 -->
+    <div class="product-section">
+      <div class="section-title">茶具系列</div>
+      <div class="product-group">
+        <div class="product-card big">
+          <img src="image/chanpin/白釉点钧茶具-桂林山水.png" alt="自釉点钧茶具-桂林山" class="product-img">
+          <div class="card-base">
+            <div class="product-title">自釉点钧茶具-桂林山</div>
+            <div class="product-tag">点钧釉</div>
+          </div>
+          <div class="card-story">
+            灵感源自桂林山水，点钧釉斑如山间云雾。<br>
+            工艺：多次施釉，窑变斑斓。<br>
+            文化关联：茶与山水共融，品味桂林意境。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/青釉盖碗.png" alt="青釉盖碗" class="product-img">
+          <div class="card-base">
+            <div class="product-title">青釉盖碗</div>
+            <div class="product-tag">青釉</div>
+          </div>
+          <div class="card-story">
+            灵感取自桂林山水的青翠色泽，盖碗造型端庄。<br>
+            工艺：青釉高温烧制，色泽温润。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/山水茶壶.png" alt="山水茶壶" class="product-img">
+          <div class="card-base">
+            <div class="product-title">山水茶壶</div>
+            <div class="product-tag">山水釉</div>
+          </div>
+          <div class="card-story">
+            壶身绘以桂林山水，釉色层次丰富。<br>
+            工艺：手工绘制，釉下彩烧制。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/云水品茗杯.png" alt="云水品茗杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">云水品茗杯</div>
+            <div class="product-tag">云水釉</div>
+          </div>
+          <div class="card-story">
+            杯身釉色如云似水，意境悠远。<br>
+            工艺：云水釉高温烧制，色彩自然流动。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 文房系列 -->
+    <div class="product-section">
+      <div class="section-title">文房系列</div>
+      <div class="product-group">
+        <div class="product-card big">
+          <img src="image/chanpin/文房石柱.png" alt="文房石柱" class="product-img">
+          <div class="card-base">
+            <div class="product-title">文房石柱</div>
+            <div class="product-tag">山水釉</div>
+          </div>
+          <div class="card-story">
+            灵感取自桂林石柱，釉色如山水画卷。<br>
+            工艺：釉面多层叠加，纹理自然。<br>
+            文化关联：文房雅器，承载山水意趣。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/山水方韵套组.png" alt="山水方韵套组" class="product-img">
+          <div class="card-base">
+            <div class="product-title">山水方韵套组</div>
+            <div class="product-tag">山水釉</div>
+          </div>
+          <div class="card-story">
+            灵感源于桂林山水形态，方器造型与山水釉相融，勾勒独特意境。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/翠峦文房杯.png" alt="翠峦文房杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">翠峦文房杯</div>
+            <div class="product-tag">山水釉</div>
+          </div>
+          <div class="card-story">
+            灵感萃取桂林山峦翠色，釉色似山水漫染杯身，意境悠远。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/青嶂文房杯.png" alt="青嶂文房杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">青嶂文房杯</div>
+            <div class="product-tag">山水釉</div>
+          </div>
+          <div class="card-story">
+            灵感采自桂林青嶂山峦，釉色如山水倾泻，晕染出别致画面。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 定制系列 -->
+    <div class="product-section">
+      <div class="section-title">定制系列</div>
+      <div class="product-group">
+        <div class="product-card big">
+          <img src="image/chanpin/定制专属杯.png" alt="定制专属杯" class="product-img">
+          <div class="card-base">
+            <div class="product-title">定制专属杯</div>
+            <div class="product-tag">专属定制</div>
+          </div>
+          <div class="card-story">
+            可定制姓名篆刻、专属山水图案。<br>
+            工艺：按需定制，独一无二。<br>
+            文化关联：专属你的桂陶艺术品。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/定制山水壶.png" alt="定制山水壶" class="product-img">
+          <div class="card-base">
+            <div class="product-title">定制山水壶</div>
+            <div class="product-tag">山水壶</div>
+          </div>
+          <div class="card-story">
+            壶身可定制山水画面，专属设计。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/定制文房器.png" alt="定制文房器" class="product-img">
+          <div class="card-base">
+            <div class="product-title">定制文房器</div>
+            <div class="product-tag">文房器</div>
+          </div>
+          <div class="card-story">
+            可定制笔筒、水盂等文房器物。
+          </div>
+        </div>
+        <div class="product-card small">
+          <img src="image/chanpin/敬请期待.png" alt="敬请期待" class="product-img">
+          <div class="card-base">
+            <div class="product-title">敬请期待</div>
+            <div class="product-tag">更多定制</div>
+          </div>
+          <div class="card-story">
+            更多定制产品，敬请期待！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 釉色模拟器 -->
+    <div class="glaze-simulator">
+      <label for="glaze-type">选择釉料：</label>
+      <select id="glaze-type">
+        <option value="qing">青釉</option>
+        <option value="lan">蓝釉</option>
+        <option value="jin">金斑釉</option>
+      </select>
+      <label for="firing-atmosphere">烧制氛围：</label>
+      <select id="firing-atmosphere">
+        <option value="reduction">还原焰</option>
+        <option value="oxidation">氧化焰</option>
+      </select>
+      <button onclick="simulateGlaze()">生成窑变效果</button>
+      <div id="glaze-preview">预览</div>
+      <p class="simulator-tip">试试调配你的‘桂林山水釉’：选釉料→选火候→看窑变</p>
+    </div>
+  </div>
+  <script>
+    // 导航栏滚动效果
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 100) {
+        nav.classList.add('scroll');
+      } else {
+        nav.classList.remove('scroll');
+      }
+    });
+    // 设置当前活动导航链接
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPath) {
+          link.classList.add('active');
+        }
+      });
+    });
+    // 釉色模拟器
+    function simulateGlaze() {
+      const glaze = document.getElementById('glaze-type').value;
+      const fire = document.getElementById('firing-atmosphere').value;
+      const preview = document.getElementById('glaze-preview');
+      let bg = '';
+      let filter = '';
+      let text = '';
+      if (glaze === 'qing' && fire === 'reduction') {
+        bg = 'linear-gradient(135deg, #3A5F56 0%, #D1E8E2 100%)';
+        filter = 'brightness(1.1) contrast(1.1)';
+        text = '青釉·还原焰';
+      } else if (glaze === 'qing' && fire === 'oxidation') {
+        bg = 'linear-gradient(135deg, #5A7F76 0%, #EAF5F2 100%)';
+        filter = 'brightness(1.05)';
+        text = '青釉·氧化焰';
+      } else if (glaze === 'lan' && fire === 'reduction') {
+        bg = 'linear-gradient(135deg, #3A5F56 0%, #4A7FB6 100%)';
+        filter = 'saturate(1.2)';
+        text = '蓝釉·还原焰';
+      } else if (glaze === 'lan' && fire === 'oxidation') {
+        bg = 'linear-gradient(135deg, #4A7FB6 0%, #EAF5F2 100%)';
+        filter = 'brightness(1.1)';
+        text = '蓝釉·氧化焰';
+      } else if (glaze === 'jin' && fire === 'reduction') {
+        bg = 'linear-gradient(135deg, #C9B176 0%, #3A5F56 100%)';
+        filter = 'drop-shadow(0 0 8px #C9B176)';
+        text = '金斑釉·还原焰';
+      } else if (glaze === 'jin' && fire === 'oxidation') {
+        bg = 'linear-gradient(135deg, #EAD9B6 0%, #C9B176 100%)';
+        filter = 'brightness(1.15)';
+        text = '金斑釉·氧化焰';
+      }
+      preview.style.background = bg;
+      preview.style.filter = filter;
+      preview.textContent = text;
+    }
+  </script>
+</body>
+</html>

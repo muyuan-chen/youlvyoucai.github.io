@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林釉陶文化馆 - 釉陶荣誉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 继承feiyilicheng.html样式 */
+        :root {
+            --primary-color: #47603c;
+            --secondary-color: #49745f;
+            --bg-color: #ffffff;
+            --light-bg: #f1f7ed;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #dce4d8;
+            --accent-color: #d3c791;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+        .container { max-width: 100%; margin: 0 auto; padding: 0; }
+        .top-banner {
+            width: 100vw;
+            height: 450px;
+            background: url('image/feiyilicheng/banner.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0.78;
+        }
+        .top-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.0);
+            z-index: 0;
+            opacity: 0.2;
+        }
+        .banner-title {
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+    .banner-subtitle {
+        position: absolute;
+        bottom: 50px;
+        left: 60%;
+        transform: translateX(-50%);
+        color: rgba(255,255,255,0.8);
+        font-size: 1.8em;
+        font-weight: normal;
+        letter-spacing: 0.1em;
+    }
+        nav {
+            background: var(--bg-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+        .nav-link {
+            color: var(--text-color);
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        .nav-link.active,
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(122, 169, 122, 0.3);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .main-section {
+            margin: 40px auto;
+            width: 100%;
+            background-image: url('image/feiyilicheng/main-section.jpg');
+            background-size: cover;
+            padding: 50px 40px;
+        }
+        .process-carousel {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+        .process-step {
+            min-width: 360px;
+            text-align: center;
+            background: var(--light-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .process-step img {
+            width: 100%;
+            max-width: 380px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-title">釉绿釉彩</div>
+        <div class="banner-subtitle">——团队荣誉</div>
+    </div>
+    <nav>
+        <div class="nav-container">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a class="nav-link" href="feiyilicheng.html"><i class="fas fa-history"></i> 非遗历程</a>
+            <a class="nav-link" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a>
+            <a class="nav-link" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a>
+            <a class="nav-link active" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a>
+            <a class="nav-link" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a>
+            <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a>
+        </div>
+    </nav>
+    <div class="container">
+        <section class="main-section">
+            <div class="flex-container">
+                <h2>釉陶荣誉</h2>
+            </div>
+            <div class="history-container">
+                <div class="history-content">
+                    <div class="process-carousel">
+                        <div class="process-step">
+                            <img src="image/rongyu/荣誉1.png" alt="荣誉1" style="width: auto; max-width: 700px; height: auto; max-height: 600px; object-fit: contain;">
+                            <p>桂林釉陶作品获国家级非遗博览会金奖，展现传统工艺创新成果。</p>
+                        </div>
+                        <div class="process-step">
+                            <img src="image/rongyu/荣誉2.png" alt="荣誉2" style="width: auto; max-width: 700px; height: auto; max-height: 600px; object-fit: contain;">
+                            <p>团队研发的环保釉料技术获实用新型专利，推动行业绿色发展。</p>
+                        </div>
+                        <div class="process-step">
+                            <img src="image/rongyu/荣誉3.jpg" alt="荣誉3" style="width: auto; max-width: 500px; height: auto; max-height: 600px; object-fit: contain;">
+                            <p>代表性作品被桂林市博物馆永久收藏，彰显文化传承价值。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="footer">
+        <p>© 2024 桂林釉陶文化馆</p>
+    </div>
+</body>
+</html>

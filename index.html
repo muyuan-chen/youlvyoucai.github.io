@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林釉陶文化馆 - 传新展艺</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+        :root {
+            --primary-color: #47603c;
+            --secondary-color: #49745f;
+            --bg-color: #ffffff;
+            --light-bg: #f1f7ed;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #dce4d8;
+            --accent-color: #d3c791;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部横幅（替换原有top-banner样式） */
+        .top-banner {
+            width: 100vw;
+            height: 450px;
+            background: url('image/图片1.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            opacity: 0.78;
+        }
+
+        .top-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.0);
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        .banner-title {
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .banner-subtitle { /* 新增副标题 */
+            position: absolute;
+            bottom: 50px;
+            left: 60%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 1.8em;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+        }
+
+        /* 导航栏（替换原有nav样式） */
+        nav {
+            background: var(--bg-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scroll { /* 新增滚动时的样式 */
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative; /* 新增定位用于::after */
+        }
+
+        .nav-link.active, 
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(44, 110, 73, 0.3);
+        }
+
+        .nav-link::after { /* 新增下划线动画 */
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link i { /* 新增图标样式 */
+            font-size: 1.2em;
+        }
+        
+        /* 主要内容区 */
+        .main-section {
+            margin: 40px auto;
+            background: var(--light-bg);
+            border-radius: 0;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            padding: 50px 40px;
+            position: relative;
+            width: 100%;
+            background-image: url('image/feiyilicheng/main-section.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+        
+        .main-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+            z-index: 0;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(44, 110, 73, 0.3);
+            display: inline-block;
+        }
+        
+        /* 返回顶部按钮 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(44, 110, 73, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        #back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1em;
+            margin: 60px 0 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .footer span {
+            font-size: 0.9em;
+            color: var(--light-text);
+            display: block;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 900px) {
+            .main-section {
+                padding: 30px 20px;
+                margin: 20px auto;
+            }
+            
+            .top-banner {
+                height: 200px;
+            }
+            
+            .banner-title {
+                font-size: 2em;
+                padding: 0.2em 1em;
+            }
+            
+            nav {
+                padding: 10px 0;
+            }
+            
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 1em;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .banner-title {
+                font-size: 1.8em;
+            }
+            
+            .nav-container {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-title">釉绿釉彩</div>
+        <div class="banner-subtitle">——非遗釉陶数据库</div> <!-- 新增副标题 -->
+    </div>
+    <nav>
+        <div class="nav-container">
+            <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> 首页</a> <!-- 保持首页链接 -->
+            <a class="nav-link" href="feiyilicheng.html"><i class="fas fa-history"></i> 非遗历程</a> <!-- 新增非遗历程 -->
+            <a class="nav-link" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a> <!-- 新增釉陶人物 -->
+            <a class="nav-link" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a> <!-- 新增釉陶产品 -->
+            <a class="nav-link" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a> <!-- 新增釉陶荣誉 -->
+            <a class="nav-link" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a> <!-- 新增釉陶烧制 -->
+            <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a> <!-- 新增AI -->
+        </div>
+    </nav>
+    <div class="container">
+        <section class="main-section">
+            <!-- 这里是页面的主要内容区域 -->
+            <h2>桂林釉陶的创新发展</h2>
+            <p>在当今时代，桂林釉陶不断探索创新之路，融合现代设计理念与传统技艺，展现出独特的艺术魅力。艺术家们通过引入新的造型、色彩和装饰手法，使桂林釉陶在保留传统文化内涵的同时，更符合当代人的审美需求。</p>
+            <p>例如，在造型方面，突破了传统的器型限制，设计出更具现代感和时尚感的作品；在色彩运用上，尝试了更多鲜艳和独特的色彩组合，让桂林釉陶焕发出新的活力。此外，还结合了现代科技手段，如3D打印、数控加工等，提高了生产效率和产品精度。</p>
+            <p>传新展艺不仅体现在产品的创新上，还包括传承方式的创新。通过举办展览、工作坊、线上课程等活动，吸引了更多年轻人关注和参与桂林釉陶的传承与发展，为这一古老技艺注入了新的生命力。</p>
+        </section>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top">↑</button>
+    
+    <div class="footer">
+        <p>© 2024 桂林釉陶文化馆</p>
+        <span>数据来源：甑皮岩考古博物馆</span>
+    </div>
+    <script>
+        // 返回顶部按钮逻辑
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 导航栏滚动效果
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                nav.classList.add('scroll');
+            } else {
+                nav.classList.remove('scroll');
+            }
+        });
+        
+        // 设置当前活动导航链接
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPath = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPath || 
+                    (currentPath.includes(link.getAttribute('href')) && currentPath !== '/')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

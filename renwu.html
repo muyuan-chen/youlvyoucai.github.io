@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林釉陶文化馆 - 釉陶人物</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 样式与index.html完全一致，直接复用 */
+        :root {
+            --primary-color: #2c6e49;
+            --secondary-color: #4c956c;
+            --bg-color: #ffffff;
+            --light-bg: #f1f7ed;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #dce4d8;
+            --accent-color: #d4a017;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html { font-size: 18px; scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23f1f7ed" stroke-width="0.5"/></svg>');
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .top-banner {
+    width: 100vw;
+    height: 450px;
+    background: url('image/图片1.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0.78;
+}
+        .top-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.0); /* 添加半透明遮罩提升文字可读性 */
+            z-index: 0; /* 确保在背景上方，内容下方 */
+            opacity: 0.2; /* 调整这里改变透明度 */
+        }
+        .banner-title {
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.2em;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.3em 1.5em;
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .banner-subtitle {
+            position: absolute;
+            bottom: 50px;
+            left: 60%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            font-size: 1.8em;
+            font-weight: normal;
+            letter-spacing: 0.1em;
+        }
+        nav {
+            background: var(--bg-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        nav.scroll {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .nav-link {
+            color: var(--text-color);
+            font-size: 1.1em;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+        .nav-link.active, 
+        .nav-link:hover {
+            background: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(44, 110, 73, 0.3);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        .nav-link i { font-size: 1.2em; }
+        .main-section {
+            margin: 40px auto;
+            background: var(--light-bg);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            padding: 50px 40px;
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+            background: url('image/feiyilicheng/main-section.jpg') center/cover no-repeat;
+        }
+        .main-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+            z-index: 0;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(44, 110, 73, 0.3);
+            display: inline-block;
+        }
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(44, 110, 73, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        #back-to-top.active { opacity: 1; visibility: visible; }
+        .footer {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1em;
+            margin: 60px 0 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+        .footer p { margin-bottom: 10px; }
+        .footer span { font-size: 0.9em; color: var(--light-text); display: block; }
+        @media (max-width: 900px) {
+            .main-section { padding: 30px 20px; margin: 20px auto; }
+            .top-banner { height: 200px; }
+            .banner-title { font-size: 2em; padding: 0.2em 1em; }
+            nav { padding: 10px 0; }
+            .nav-link { padding: 6px 12px; font-size: 1em; }
+        }
+        /* 新增图片样式 */
+        .image-text-container {
+            display: flex;
+            margin: 25px 0;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .image-text-container img {
+            width: 40%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .text-content {
+            width: 60%;
+        }
+
+        .artisan-image-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+
+        .artisan-image-container img {
+            width: 35%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .artisan-text {
+            width: 65%;
+        
+
+        .artisan-text {
+            width: 65%;
+            line-height: 1.8;
+        }
+
+        .artisan-image-container img {
+            width: 35%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            .banner-title { font-size: 1.8em; }
+            .nav-container { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部横幅 -->
+    <div class="top-banner">
+        <div class="banner-title" style="
+            font-family: 'STXingkai', 'KaiTi', 'STKaiti', cursive;
+            font-size: 4.5em;
+            font-weight: normal;
+            color: #000000;
+            text-shadow: 3px 3px 6px rgba(28, 28, 24, 0.3);
+            background: linear-gradient(to right, #000000, #000000, #273934);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            padding: 0.2em 0.5em;
+            display: inline-block;
+            transform: rotate(-2deg);
+        ">釉绿釉彩</div>
+        <div class="banner-subtitle">——非遗匠人的现代实践</div>
+    </div>
+
+    <!-- 导航栏（当前页为renwu.html，添加active类） -->
+    <nav>
+        <div class="nav-container">
+            <a class="nav-link" href="index.html"><i class="fas fa-home"></i> 首页</a>
+            <a class="nav-link" href="feiyilicheng.html"><i class="fas fa-history"></i> 非遗历程</a>
+            <a class="nav-link active" href="renwu.html"><i class="fas fa-users"></i> 釉陶人物</a>
+            <a class="nav-link" href="chanpin.html"><i class="fas fa-mug-hot"></i> 釉陶产品</a>
+            <a class="nav-link" href="rongyu.html"><i class="fas fa-trophy"></i> 釉陶荣誉</a>
+            <a class="nav-link" href="shaozhi.html"><i class="fas fa-fire"></i> 釉陶烧制</a>
+            <a class="nav-link" href="ai.html"><i class="fas fa-robot"></i> AI</a>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <div class="container">
+        <section class="main-section">
+            <!-- 观志艺航传承团队 -->
+            <h2>观志艺航传承团队</h2>
+            <div class="team-intro">
+                <p>团队由青年陶艺家、非遗研究者及设计专业学生组成，致力于传统釉陶技艺的活态传承与创新转化。通过“传统工艺+现代设计+数字技术”的融合模式，开发了系列文创产品，并在全国非遗展会上获得广泛关注。</p>
+            </div>
+
+            <!-- 新增模块2内容：核心传承人介绍 -->
+            <h2>核心传承人</h2>
+            <div class="master-intro">
+                <h3>李建国（市级非遗传承人）</h3>
+                <p>从事釉陶制作30余年，擅长传统釉料配方复原与现代器型设计。其作品《漓江渔火》系列将桂林山水元素融入釉陶，被桂林市博物馆永久收藏。</p>
+                
+                <h3>王秀兰（区级非遗传承人）</h3>
+                <p>专注釉陶装饰工艺研究，创新“叠彩刻花”技法，通过多层釉料叠加与雕刻，实现色彩层次的丰富表达，相关技术已申请实用新型专利。</p>
+            </div>
+            <div class="timeline" style="margin: 20px 0;">
+            <h3 style="color: var(--secondary-color); margin: 15px 0;">团队发展历程</h3>
+            <!-- 2022年 -->
+            <div class="image-text-container" style="border-left: 4px solid var(--accent-color); padding-left: 20px;">
+                <img src="image/renwu/图片1.jpg" alt="团队研发釉料">
+                <div class="text-content">
+                    <h4>2022年：釉料安全创新</h4>
+                    <p>组建专业研发团队，系统梳理传统釉料配方，成功研制出54种安全环保釉料。通过现代检测技术，使铅镉溶出量低于国家标准50%，实现了传统工艺的安全升级。</p>
+                </div>
+            </div>
+            <!-- 2023年 -->
+            <div class="image-text-container" style="border-left: 4px solid var(--accent-color); padding-left: 20px;">
+                <img src="image/renwu/图片2.jpg" alt="电窑烧制技艺">
+                <div class="text-content">
+                    <h4>2023年：智能烧制技术</h4>
+                    <p>研究窑炉温度控制技术，升级为电窑烧制系统。相比传统龙窑，能耗降低60%，控温精度提升至±2℃，烧制温度分布均匀性提高40%，成品率提升35%。</p>
+                </div>
+            </div>
+            <!-- 2024年 -->
+            <div class="image-text-container" style="border-left: 4px solid var(--accent-color); padding-left: 20px;">
+                <img src="image/renwu/图片3.png" alt="喷釉设备研制">
+                <div class="text-content">
+                    <h4>2024年：生产工艺优化</h4>
+                    <p>自主研发数控喷釉设备，实现釉料厚度精准控制（误差≤0.1mm）。结合电商平台拓展销售渠道，建立线上线下一体化营销体系，使成品率提高25%，釉面平整度提升60%。</p>
+                </div>
+            </div>
+            <!-- 2025年规划 -->
+            <div class="image-text-container" style="border-left: 4px solid var(--accent-color); padding-left: 20px;">
+                <img src="image/renwu/图片4.jpg" alt="未来发展">
+                <div class="text-content">
+                    <h4>2025年（规划）：数字化传承</h4>
+                    <p>计划将AI创作技术与釉陶工艺结合，开发智能设计系统。通过机器学习分析传统纹样数据库，实现辅助创作功能，推动桂林釉陶文化IP国际化传播。</p>
+                </div>
+            </div>
+        </div>
+
+            <h2 class="mt-40">传承人故事</h2>
+            <div class="artisan-story">
+            <h3 style="color: var(--secondary-color); margin: 15px 0;">陈施淼（陈晓）</h3>
+            <div class="artisan-image-container">
+                <img src="image/renwu/图片5.png" alt="传承人陈施淼">
+                <div class="artisan-text">
+                    <p>自治区级非遗传承人，从事釉陶制作40余年，首创“12阶段还原焰复合烧”工艺。该技术通过精准控制窑内气氛变化，成功复烧出失传800年的宋代“雨过天青”釉色，相关成果获国家发明专利。</p>
+                    <p>在其指导下，团队完成3项关键技术突破：传统釉料数字化分析、智能控温系统研发、环保窑炉改造，使桂林釉陶生产效率提升3倍，同时保留95%以上的传统工艺特征。</p>
+                    <p>国家一级陶瓷工艺师（高级技师）、省级非物质遗产--桂林釉陶制作技艺传承人。 生于桂林，自幼酷爱手工尤善陶艺。后受岭南陶瓷文化代表--东窑、桂州窑等桂系陶文化启蒙， 立心研习传统陶瓷制作技法和古釉配方的收集，整理恢复二十余种基础釉、实现现代复烧。作品设计获9项外观专利、两项发明专利。多次获国家级各奖、国家一级桂林博物馆永久馆藏、迪拜世博会中国馆展藏并作为国礼赠国外大使。 精于陶瓷制作全流程技艺：陶矿甑选、土材配制、造型设计、塑型制坯、生釉调配、程控窑烧。创烧“12阶段还原焰复合烧”工艺，成功复烧宋代铁锈花、青瓷、月白釉、天目釉、钧瓷等系列。</p>
+                </div>
+            </div>
+        </div>
+        </section>
+    </div>
+    
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top">↑</button>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>© 2024 桂林釉陶文化馆</p>
+        <span>数据来源：甑皮岩考古博物馆、桂林市非物质文化遗产保护中心</span>
+    </div>
+
+    <!-- 脚本与index.html完全一致 -->
+    <script>
+        // 返回顶部按钮逻辑
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 导航栏滚动效果
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                nav.classList.add('scroll');
+            } else {
+                nav.classList.remove('scroll');
+            }
+        });
+    </script>
+</body>
+</html>
